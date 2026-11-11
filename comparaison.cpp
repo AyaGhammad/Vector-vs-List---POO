@@ -38,6 +38,7 @@ void freeAll(std::vector<int>& v, std::forward_list<int>& l) {
 int main() {
     const int N = 10000;
     const int repetitions = 100;
+    const int operations = 1000;
     const int middle = N / 2;
     std::cout << std::fixed << std::setprecision(3);
     std::cout << "Benchmark N = " << N << "\n";
@@ -50,7 +51,6 @@ int main() {
         [&](std::vector<int>& container) {
             container.insert(container.begin() + middle, 99);
         },
-    const int operations = 1000;
         repetitions, operations);
     const double forwardListInsert = benchmark(
         [&]() { return std::forward_list<int>(N, 42); },
